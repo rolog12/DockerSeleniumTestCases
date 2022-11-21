@@ -5,24 +5,28 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-public class LoginFailureTest extends Login_Page {
-    protected String WrongPassword_Text="WrongPassword";
-
-    By loginWrongMessage_IdLoc=By.id("flash"); //*[@id="flash"]
-    protected String AssertloginFailed_Text="Your password is invalid!\n" +
-            "×";
+public class LoginFailureTest {
+    WebDriver driverDotDash;
+    Login_Page loginFailed;
+    public  String LoginUrl = "login";
     @Before
     public void setUp() {
-        setUrl();
+        loginFailed=new Login_Page(driverDotDash);
+        loginFailed.setChrome();
+        loginFailed.setUrl(LoginUrl);
     }
     @Test
     public void failedloginToDotDash () {
-        sendCredentials(WrongPassword_Text);
-        assertLogin(AssertloginFailed_Text);
+        loginFailed.waitForElement();
+        loginFailed.sendUserName();
+        loginFailed.sendWrongPassword();
+        loginFailed.clickLoginBtn();
+        loginFailed.assertWrongLogin();
     }
     @After
     public void tearDown() {
-       closeAllWindows();
+       loginFailed.closeAllWindows();
     }
 }

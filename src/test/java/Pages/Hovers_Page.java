@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import wrapper.setWrapper;
 
@@ -14,9 +15,14 @@ public class Hovers_Page extends setWrapper {
     protected String User1Text="name: user1";
     protected String User2Text="name: user2";
     protected String User3Text="name: user3";
-    public void setUrl (){
+    public Hovers_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome(){
         chromeDriverSetUp();
-        goToURL(Url_Hovers);
+    }
+    public void setUrl(String url){
+        goToURL(UrlPref+url);
     }
     public void hoversNdAssert(){
         // Check hover mouse on Image Number 1

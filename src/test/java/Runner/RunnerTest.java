@@ -6,6 +6,7 @@ import tests.*;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        LoginSuccessTest.class,
         LoginFailureTest.class,
         CheckBoxTest.class,
         ContextMenuTest.class,
@@ -14,15 +15,14 @@ import tests.*;
         DynamicContentTest.class,
         DynamicLoadingTest.class,
         DownLoadTest.class,
-        uploadFileTest.class,
+        UploadFileTest.class,
         FloatingMenuTest.class,
-        iFrameTest.class,
+        IFrameTest.class,
         HoversTest.class,
         JavaScriptAlertTest.class,
         JsLogErrorTest.class,
         WindowsTest.class,
         NotificationMsgRenderedTest.class
-
 })
 public class RunnerTest {
 }

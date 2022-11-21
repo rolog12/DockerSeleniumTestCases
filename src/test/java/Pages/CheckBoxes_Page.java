@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import wrapper.setWrapper;
 
 public class CheckBoxes_Page extends setWrapper {
@@ -8,9 +9,14 @@ public class CheckBoxes_Page extends setWrapper {
     By checkBox_loc1 = By.xpath("//*[@id=\"checkboxes\"]/input[1]");
     By checkBox_loc2 = By.xpath("//*[@id=\"checkboxes\"]/input[2]");
 
-    public void setUrl(){
+    public CheckBoxes_Page(WebDriver driverDotDash) {
+        super(driverDotDash);
+    }
+    public void setChrome (){
         chromeDriverSetUp();
-        goToURL(Url_CheckBox);
+    }
+    public void setUrl(String RemainUrl){
+        goToURL(UrlPref+RemainUrl);
     }
 
     public void chooseCheckBoxes (){

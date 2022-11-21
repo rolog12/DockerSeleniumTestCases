@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import wrapper.setWrapper;
 
@@ -11,10 +12,14 @@ public class DropDown_Page extends setWrapper {
     By optionDropDownList_2=By.xpath("//option[@value=\"2\"]");
      String optionList_2="Option 2";
     String optionList_1="Option 1";
-
-    public void setUrl (){
+    public DropDown_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome(){
         chromeDriverSetUp();
-        goToURL(Url_Dropdown);
+    }
+    public void setUrl (String url){
+        goToURL(UrlPref+url);
     }
 
     public void option1Selected(){

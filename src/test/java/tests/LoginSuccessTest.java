@@ -4,23 +4,29 @@ import Pages.Login_Page;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
-public class LoginSuccessTest extends Login_Page {
-    protected String RightPassword_Text="SuperSecretPassword!";
-    protected String AssertloginSucess_Text="You logged into a secure area!\n" +
-            "×";
-
+public class LoginSuccessTest {
+    public  String LoginUrl = "login";
+    WebDriver driverDotDash;
+    Login_Page loginPage;
     @Before
     public void setUp() {
-        setUrl();
+        loginPage=new Login_Page(driverDotDash);
+        loginPage.setChrome();
+        loginPage.setUrl(LoginUrl);
+
     }
     @Test
     public void loginToDotDash () {
-        sendCredentials(RightPassword_Text);
-        assertLogin(AssertloginSucess_Text);
+        loginPage.waitForElement();
+        loginPage.sendUserName();
+        loginPage.sendPassword();
+        loginPage.clickLoginBtn();
+        loginPage.assertLogin();
     }
     @After
     public void tearDown() {
-        closeAllWindows();
+        loginPage.closeAllWindows();
     }
 }

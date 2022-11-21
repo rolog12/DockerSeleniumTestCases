@@ -4,23 +4,29 @@ import Pages.JavaScriptAlerts_Page;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
-public class JavaScriptAlertTest extends JavaScriptAlerts_Page {
+public class JavaScriptAlertTest {
+    public String Url_javascriptalerts="javascript_alerts";
+    WebDriver driverDotDash;
+    JavaScriptAlerts_Page javaScriptAlerts_page;
     @Before
     public void setUp(){
-        setUrl();
+        javaScriptAlerts_page=new JavaScriptAlerts_Page(driverDotDash);
+        javaScriptAlerts_page.setChrome();
+        javaScriptAlerts_page.setUrl(Url_javascriptalerts);
     }
 
     @Test
-    public void alertNdAssert() throws InterruptedException {
-        jsAlertNdAssert();
-        jsConfirmNdAssert();
-        jsPromptNdAssert();
+    public void alertNdAssert() {
+        javaScriptAlerts_page.jsAlertNdAssert();
+        javaScriptAlerts_page.jsConfirmNdAssert();
+        javaScriptAlerts_page.jsPromptNdAssert();
 
     }
 
     @After
     public void tearDown() {
-       // closeAllWindows();
+        javaScriptAlerts_page.closeAllWindows();
     }
 }

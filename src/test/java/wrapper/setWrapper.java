@@ -33,32 +33,16 @@ import java.util.logging.Level;
 public class setWrapper {
     static WebDriver driverDotDash;
     Alert alert_ins;
-    String Url = "http://localhost:7080/";
-
-    public  String Url_Login = Url+"login";
-    protected String Url_CheckBox=Url+"checkboxes";
-    public String Url_contextMenu=Url+"context_menu";
-    public String Url_DragNdDrop= Url+"drag_and_drop";
-    public String Url_Dropdown= Url+"dropdown";
-    public String Url_DynamicContent= Url+"dynamic_content";
-    public String Url_DynamicControls= Url+"dynamic_controls";
-    public String Url_DynamicLoading= Url+"dynamic_loading/2";
-    public String Url_Download=Url+"download";
-    public String Url_Upload=Url+"upload";
-    public String Url_FlotaingMenu= Url+"floating_menu";
-    public String Url_iFrame= Url+"iframe";
-    public String Url_Hovers= Url+"hovers";
-    public String Url_javascriptalerts=Url+"javascript_alerts";
-    public String Url_javascripError=Url+"javascript_error";
-    public String Url_windows=Url+"windows";
-    public String Url_notification_msg_rendered=Url+"notification_message_rendered";
+    public String UrlPref= "http://localhost:7080/";
 
     public void isPresentonScreen (By locator){
         int ispresent = driverDotDash.findElements(locator).size();
         if (ispresent!=0)System.out.println("Element is present");
         else System.out.println("Element is not present");
     }
-
+    public setWrapper(WebDriver driverDotDash){
+        this.driverDotDash=driverDotDash;
+    }
     public WebDriver chromeDriverSetUp (){
         if (driverDotDash==null){
             WebDriverManager.chromedriver().setup();
@@ -69,7 +53,7 @@ public class setWrapper {
     public void goToURL (String goToUrl){
     driverDotDash.navigate().to(goToUrl);
     }
-    public void sendkeys (By locator, String inputText){
+    public void sendKeys (By locator, String inputText){
         driverDotDash.findElement(locator).sendKeys(inputText);
     }
 
@@ -103,6 +87,7 @@ public class setWrapper {
     }
     public void closeAllWindows (){
         driverDotDash.close();
+        //driverDotDash.quit();
     }
     public void myassertValidation(String expectOrUnexpected,String CurrentText,int equalsNdNotEquals){
         if (equalsNdNotEquals==1)
@@ -111,6 +96,7 @@ public class setWrapper {
         assertNotEquals(expectOrUnexpected,CurrentText);
 
     }
+
     public void assertisDisplayed (String booleanValue, By locator){
         String s=String.valueOf(webelement_meth(locator).isDisplayed());
         System.out.println(s);
@@ -250,6 +236,10 @@ public class setWrapper {
         List<String> es=new ArrayList<String>(driverDotDash.getWindowHandles());
         driverDotDash.switchTo().window(es.get(1));
         es.stream().forEach(System.out::println);
+    }
+    public void returnToPreviousWindow(){
+        List<String> es=new ArrayList<String>(driverDotDash.getWindowHandles());
+        driverDotDash.switchTo().window(es.get(0));
     }
     List<String>notification;
     public void clickonLinkNdAssert (By LinkToClick,By ActionMesagelocator,String successMsg,String notSuccessMsg){

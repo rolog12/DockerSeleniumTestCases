@@ -1,15 +1,19 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import wrapper.setWrapper;
 
 public class ContextMenu_Page extends setWrapper {
-    By contextMenu_loc= By.id("hot-spot"); //*[@id="hot-spot"]
     By rightClick_loc=By.id("hot-spot");
-
-    public void setUrl() {
+    public ContextMenu_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome (){
         chromeDriverSetUp();
-        goToURL(Url_contextMenu);
+    }
+    public void setUrl(String RemainUrl) {
+        goToURL(UrlPref+RemainUrl);
     }
 
     public void rightClickAndAssert() {

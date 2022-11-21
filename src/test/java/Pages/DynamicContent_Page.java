@@ -1,15 +1,21 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import wrapper.setWrapper;
 
 public class DynamicContent_Page extends setWrapper {
     By dynamicContent_loc= By.xpath("//div[@class='large-10 columns large-centered']//child::div[@class='row'][1]");
     String DynamicContentBefore;
     String DynamicContentAfter;
-    public void setUrl(){
+    public DynamicContent_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome(){
         chromeDriverSetUp();
-        goToURL(Url_DynamicContent);
+    }
+    public void setUrl(String url){
+        goToURL(UrlPref+url);
     }
 
     public void refreshThePageNdAssert (int timesToBeRefreshed) {

@@ -4,20 +4,27 @@ import Pages.DynamicContent_Page;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
-public class DynamicContentTest extends DynamicContent_Page {
+public class DynamicContentTest {
+    public String Url_DynamicContent= "dynamic_content";
+    WebDriver driverDotDash;
+    DynamicContent_Page dynamicContent_page;
+
     @Before
     public void setUp() {
-        setUrl();
+        dynamicContent_page=new DynamicContent_Page(driverDotDash);
+        dynamicContent_page.setChrome();
+        dynamicContent_page.setUrl(Url_DynamicContent);
     }
 
     @Test
     public void refreshF5() {
-        refreshThePageNdAssert(3);
+        dynamicContent_page.refreshThePageNdAssert(3);
     }
 
     @After
     public void tearDown() {
-        closeAllWindows();
+        dynamicContent_page.closeAllWindows();
     }
 }

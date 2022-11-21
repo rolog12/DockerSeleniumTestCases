@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import wrapper.setWrapper;
 
 import java.awt.*;
@@ -9,10 +10,14 @@ public class DynamicLoading_Page extends setWrapper {
     By StartButton_loc= By.xpath("//*[@id=\"start\"]/button");
     By HelloWorld_loc =By.xpath("//div[@id=\"finish\"]/h4");
     String HelloWorld_Text= "Hello World!";
-
-    public void setUrl(){
+    public DynamicLoading_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome(){
         chromeDriverSetUp();
-        goToURL(Url_DynamicLoading);
+    }
+    public void setUrl(String url){
+        goToURL(UrlPref+url);
     }
 
     public void startbtnNdAssert (){

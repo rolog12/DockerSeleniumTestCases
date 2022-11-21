@@ -1,18 +1,24 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import wrapper.setWrapper;
 
 import java.io.File;
 
 public class DownLoad_Page extends setWrapper {
     By downloadFile_loc= By.xpath("//div/a[@href='download/some-file.txt']");
-
-    public void setUrl(){
+    public DownLoad_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome (){
         chromePreferencies();
         chromeOptions();
         chromeDriverSetUpOP();
-        goToURL(Url_Download);
+    }
+    public void setUrl(String RemainUrl){
+
+        goToURL(UrlPref+RemainUrl);
     }
 
     public void downloadFile () throws InterruptedException {

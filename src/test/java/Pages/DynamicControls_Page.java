@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import wrapper.setWrapper;
 
 public class DynamicControls_Page extends setWrapper {
@@ -14,9 +15,14 @@ public class DynamicControls_Page extends setWrapper {
     protected String itsEnabledText = "It's enabled!";
     protected String itsDesabledText = "It's disabled!";
 
-    public void setUrl(){
+    public DynamicControls_Page (WebDriver driverDotDash){
+        super(driverDotDash);
+    }
+    public void setChrome(){
         chromeDriverSetUp();
-        goToURL(Url_DynamicControls);
+    }
+    public void setUrl(String url){
+        goToURL(UrlPref+url);
     }
 
     public void removeAddBtn () {
